@@ -1,0 +1,99 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<form method="post" style="padding-top: 50px; font-size: 20px">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal"
+        style="
+                font-size: 20px;
+                text-align: center;
+                color: white;
+                border: solid red;
+                border-radius: 8px;
+                background-color: #FF6666;
+                width: fit-content;
+                margin-left:700px;
+        "
+    >
+    Please sign in
+    </h1>
+    <div class="login-form"
+         style="
+                margin-left: 500px;
+                margin-right: 500px;
+                font-size: 18px
+         "    
+    >
+        {# <p style="
+                  font-size: 20px;
+                  text-align: center;
+                  margin-right: 225px;
+                  margin-left: 225px;
+                  border: solid red;
+        "
+        >
+        Login
+        </p> #}
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" placeholder="Please, enter your email" required autofocus>
+        <label for="inputPassword">Password</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" placeholder="Please, enter your password" required>
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}">
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+    <div class="submit-btn"
+         style="
+                margin-left: 670px;
+                padding-top: 10px;
+         "
+    >
+        <button class="btn btn-lg btn-primary" type="submit"
+                style="
+                        background-color: rgb(92, 167, 204);
+                        border: none;
+                "
+        >
+        Sign in
+        </button>
+        <button class="btn btn-lg btn-primary" style="background-color: rgb(92, 167, 204); border: none">
+            <a href="{{path('app_register')}}" style="text-decoration: none; color: white">Register</a>
+        </button>
+    </div>
+
+{# .submit-btn{
+  width: 85%;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  background: #fff;
+  border: none;
+  border-radius: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 19px;
+} #}
+</form>
+{% endblock %}

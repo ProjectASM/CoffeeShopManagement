@@ -1,0 +1,16 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+<div class="container" 
+     style="
+            margin-top: 50px; 
+            width: 500px;
+     "
+     >
+    {{ form_start(registrationForm) }}
+    {{ form_widget(registrationForm) }}
+    {{ form_end(registrationForm) }}
+</div>
+{% endblock %}
