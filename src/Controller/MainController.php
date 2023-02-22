@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Staff;
 use App\Repository\ProductRepository;
 use App\Repository\StaffRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

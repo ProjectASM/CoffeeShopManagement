@@ -48,7 +48,7 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
     {
        $en = $this->getEntityManager()->getConnection();
        $sql = '
-            SELECT ss.id, st.name, ss.basic_salary, ss.coefficients_salary, 
+            SELECT st.id, st.name, ss.basic_salary, ss.coefficients_salary, 
                 COUNT(tk.staff_id) AS `Number Of Working Days`, ss.bonus, ss.advance_salary, 
                 (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
             FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
@@ -91,16 +91,16 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
 //     */
 //    public function SalaryStatistics(): array
 //    {
-//     // SELECT ss.id, st.name, ss.basic_salary, ss.coefficients_salary, 
+//     // SELECT st.id, st.name, ss.basic_salary, ss.coefficients_salary, 
 //     //      COUNT(tk.staff_id) AS `Number Of Working Days`, ss.bonus, ss.advance_salary, 
 //     //      (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
 //     // FROM `staff1` `st`, `timekeeping1` `tk`, `salary_statistics1` `ss`
 //     // WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
 //     // GROUP BY tk.staff_id
 //        return $this->createQueryBuilder('ss')
-//            ->select('ss.id, st.name, ss.basic_salary, ss.coefficients_salary,
-//                      COUNT(tk.staff_id) AS `Number Of Working Days`, ss.bonus, ss.advance_salary,
-//                      (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
+//            ->select('st.id, st.name, ss.basicSalary, ss.coefficientsSalary,
+//                      COUNT(tk.staff) AS Number_Of_Working_Days, ss.bonus, ss.advanceSalary,
+//                      (ss.basicSalary*ss.coefficientsSalary + ss.bonus - ss.advanceSalary) AS Total_Salary
 //            ')
 
 //            ->innerJoin('ss.salaryTimekeeping', 'tk')
@@ -112,9 +112,9 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
 //         //    ->where('staff.name like :val')
 //         //    ->setParameter('val', '%P%')
 
-//            ->groupBy('tk.staff_id')
+//            ->groupBy('tk.staff')
 
-//            ->orderBy('ss.id', 'ASC')
+//            ->orderBy('st.id', 'ASC')
 
 //            ->getQuery()
 //            ->getArrayResult()

@@ -89,12 +89,29 @@ class SalaryStatisticsController extends AbstractController
     // }
 
     /**
-     * @Route("/salary-table", name="findStaffSalaryById")
+     * @Route("/salary-table", name="findStaffSalary")
      */
-    public function findStaffSalaryById(): Response
+    public function findStaffSalary(): Response
     {
         $salary = $this->repo->SalaryStatistics();
         return $this->json($salary);
     }
 
+    // /**
+    //  * @Route("/table", name="table")
+    //  */
+    // public function tableAction(Staff $st, SalaryStatistics $ss): Response
+    // {
+    //     $table = [
+    //         'id'=>$st->getId(),
+    //         'name'=>$st->getName(),
+    //         'basicSalary'=>$ss->getBasicSalary(),
+    //         'coefficientsSalary'=>$ss->getCoefficientsSalary()
+    //     ];
+
+    //     // return $this->render('salary_statistics/table.html.twig', [
+    //     //     'table'=>$table
+    //     // ]);
+    //     return $this->json($table);
+    // }
 }

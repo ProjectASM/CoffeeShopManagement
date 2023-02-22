@@ -60,7 +60,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         //chuyển hướng khi đăng nhập thành công (lấy route name)
-        return new RedirectResponse($this->urlGenerator->generate('list'));
+        return new RedirectResponse($this->urlGenerator->generate('homepage'));
     }
 
 
