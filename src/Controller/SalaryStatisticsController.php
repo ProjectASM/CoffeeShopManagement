@@ -22,13 +22,24 @@ class SalaryStatisticsController extends AbstractController
     {
         $this->repo = $repo;
     }
+    // /**
+    //  * @Route("/", name="salaryStatisticsPage")
+    //  */
+    // public function salaryStatisticsPageAction(): Response
+    // {
+    //     $salary = $this->repo->findAll();
+    //     return $this->render('salary_statistics/index.html.twig', [
+    //         'salary'=>$salary
+    //     ]);
+    // }
+
     /**
      * @Route("/", name="salaryStatisticsPage")
      */
     public function salaryStatisticsPageAction(): Response
     {
-        $salary = $this->repo->findAll();
-        return $this->render('salary_statistics/index.html.twig', [
+        $salary = $this->repo->SalaryStatistics();
+        return $this->render('salary_statistics/table.html.twig', [
             'salary'=>$salary
         ]);
     }
@@ -88,14 +99,17 @@ class SalaryStatisticsController extends AbstractController
     //     ]);
     // }
 
-    /**
-     * @Route("/salary-table", name="findStaffSalary")
-     */
-    public function findStaffSalary(): Response
-    {
-        $salary = $this->repo->SalaryStatistics();
-        return $this->json($salary);
-    }
+    // /**
+    //  * @Route("/salary-table", name="findStaffSalary")
+    //  */
+    // public function findStaffSalary(): Response
+    // {
+    //     $salary = $this->repo->SalaryStatistics();
+    //     // return $this->json($salary);
+    //     return $this->render('salary_statistics/table.html.twig', [
+    //         'salary'=>$salary
+    //     ]);
+    // }
 
     // /**
     //  * @Route("/table", name="table")

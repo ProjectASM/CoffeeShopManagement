@@ -48,12 +48,12 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
     {
        $en = $this->getEntityManager()->getConnection();
        $sql = '
-            SELECT st.id, st.name, ss.basic_salary, ss.coefficients_salary, 
-                COUNT(tk.staff_id) AS `Number Of Working Days`, ss.bonus, ss.advance_salary, 
-                (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
+            SELECT st.id, st.name, ss.basic_salary as basicSalary, ss.coefficients_salary as coefficientsSalary, 
+                COUNT(tk.date) AS `Number_Of_Working_Days`, ss.bonus, ss.advance_salary as advanceSalary, 
+                (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total_Salary`
             FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
             WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
-            GROUP BY tk.staff_id
+            GROUP BY MONTH(tk.date), tk.staff_id
        ';
        $stmt = $en->prepare($sql);
        $re = $stmt->executeQuery();
@@ -91,28 +91,24 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
 //     */
 //    public function SalaryStatistics(): array
 //    {
-//     // SELECT st.id, st.name, ss.basic_salary, ss.coefficients_salary, 
-//     //      COUNT(tk.staff_id) AS `Number Of Working Days`, ss.bonus, ss.advance_salary, 
-//     //      (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
-//     // FROM `staff1` `st`, `timekeeping1` `tk`, `salary_statistics1` `ss`
-//     // WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
-//     // GROUP BY tk.staff_id
+// //     SELECT st.id, st.name, ss.basic_salary, ss.coefficients_salary, 
+// //     COUNT(tk.date) AS `Number Of Working Days`, ss.bonus, ss.advance_salary, 
+// //      (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total Salary`
+// // FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
+// //  WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
+// //  GROUP BY MONTH(tk.date), tk.staff_id
 //        return $this->createQueryBuilder('ss')
 //            ->select('st.id, st.name, ss.basicSalary, ss.coefficientsSalary,
-//                      COUNT(tk.staff) AS Number_Of_Working_Days, ss.bonus, ss.advanceSalary,
+//                      COUNT(tk.date) AS Number_Of_Working_Days, ss.bonus, ss.advanceSalary,
 //                      (ss.basicSalary*ss.coefficientsSalary + ss.bonus - ss.advanceSalary) AS Total_Salary
 //            ')
 
 //            ->innerJoin('ss.salaryTimekeeping', 'tk')
 //            ->innerJoin('tk.staff', 'st')
 
-//         //    ->where('st.id = :val')
-//         //    ->setParameter('val', $id)
-        
-//         //    ->where('staff.name like :val')
-//         //    ->setParameter('val', '%P%')
 
 //            ->groupBy('tk.staff')
+//         //    ->groupBy('MONTH(tk.date)')
 
 //            ->orderBy('st.id', 'ASC')
 

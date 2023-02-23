@@ -33,6 +33,11 @@ when@prod:
             result_cache_driver:
                 type: pool
                 pool: doctrine.result_cache_pool
+            # new doctrine was added on 22/02/20223
+            dql:
+                string_functions:
+                    MONTH: DoctrineExtensions\Query\Mysql\Month
+                    YEAR: DoctrineExtensions\Query\Mysql\Year
 
     framework:
         cache:
