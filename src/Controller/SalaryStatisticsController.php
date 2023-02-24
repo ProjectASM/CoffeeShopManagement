@@ -88,6 +88,27 @@ class SalaryStatisticsController extends AbstractController
         return $this->redirectToRoute('staffPage', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * @Route("/table", name="salaryStatisticstable")
+     */
+    public function salaryStatisticstableAction(): Response
+    {
+        $salary = $this->repo->findAll();
+        return $this->render('salary_statistics/tableshow.html.twig', [
+            'salary'=>$salary
+        ]);
+    }
+        /**
+     * @Route("/table", name="salaryStatistics")
+     */
+    public function salaryStatisticsAction(): Response
+    {
+        $salary = $this->repo->SalaryStatistics();
+        return $this->render('salary_statistics/index.html.twig', [
+            'salary'=>$salary
+        ]);
+    }
+
     // /**
     //  * @Route("/{id}", name="findStaffSalaryById")
     //  */
