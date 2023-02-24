@@ -148,10 +148,18 @@
       </ul>
 
       <!-- Search -->
-      <form class="w-auto py-1" style="max-width: 15rem" action="">
-        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search">
+      {# {% for sea in search %}
+        <tr>
+            <td>{{sea.id}}</td>
+            <td>{{sea.name}}</td>
+            <td>{{sea.address}}</td>
+            <td>{{sea.image}}</td>
+        <tr> #}
+      {# <form class="w-auto py-1" style="max-width: 15rem" action="{{path('searchByName', {'name':sea.name})}}"> #}
+      <form class="w-auto py-1" style="max-width: 15rem" action="{{path('searchByName')}}">
+        <input type="search" class="form-control rounded-0" placeholder="Search" aria-label="Search" name="name">
       </form>
-
+      {# {% endfor %} #}
     </div>
   </div>
   <!-- Container wrapper -->

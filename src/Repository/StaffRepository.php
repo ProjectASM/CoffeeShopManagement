@@ -39,6 +39,27 @@ class StaffRepository extends ServiceEntityRepository
         }
     }
 
+   /**
+    * @return Staff[] Returns an array of Staff objects
+    */
+   public function searchByName($name): array
+   {
+       return $this->createQueryBuilder('st')
+           ->select('st.image, st.id, st.name, st.birthday')
+           ->where('st.name LIKE :name')
+           ->setParameter('name', '%'.$name.'%')
+        //    ->orderBy('s.id', 'ASC')
+        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getArrayResult()
+       ;
+   }
+
+
+
+
+
+
 //    /**
 //     * @return Staff[] Returns an array of Staff objects
 //     */

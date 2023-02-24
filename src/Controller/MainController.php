@@ -52,4 +52,16 @@ class MainController extends AbstractController
         ]);
     }
 
+    // /**
+    //  * @Route("/search/{name}", name="searchByName")
+    //  */
+    // public function searchByNameAction(string $name): Response
+    // {
+    //     $search = $this->repo->searchByName($name);
+    //     return $this->render('home.html.twig', [
+    //         'search'=>$search
+    //     ]);
+    //     // return $this->json($search);
+    // }
+
 }
