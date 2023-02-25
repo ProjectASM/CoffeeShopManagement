@@ -3,21 +3,22 @@
     Detail of staff {{s.id}}
 {% endblock %}
 {% block body %}
-<section class="h-100 h-custom" style="background-color: #d2c9ff;">
+<section class="h-100 h-custom" style="background-color: #d2c9ff;" >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12">
         <div class="card card-registration card-registration-2" style="border-radius: 15px;">
           <div class="card-body p-0">
             <div class="row g-0">
-              
+            
             <div class="col-lg-5 p-5">
-                    <div class="image_selected ms-3">
+                    <div class="image_selected ms-3" style= "border: 5px dotted pink">
                     {% set img = s.image %}
                         <img src="{{asset('uploads/'~img)}}"
                         class="w-100" />
                     </div>
                 </div>
+                
                 <div class="col-lg-7 p-5">
                     <div class="product_description" 
                          style="
@@ -25,15 +26,18 @@
                                 font-size: 30px;
                                 margin-top: 50px;
                          ">
-                        <div class="product_name">Name:{{s.name}}</div>
+                        
+                        <div class="product_name"><span style="font-size: 30px; color: black; font-weight: bold;">Name:</span><span style="color:#607D8B">{{s.name}}</span></div>
                         
                         {# <div> <span class="product_price"><span>&#8363;</span> {{p.price}}</div> #}
-                        <div> <span class="product_price">Gender:{{s.gender}}</div>
+                        <div> <span class="product_price"><span style="font-weight: bold">Gender:</span> {{s.gender}}</div>
                         
                         <div>  
-                            <span class="product_info">Birthday: {{s.birthday|date("d/m/Y")}}<span><br> 
-                            <span class="product_info">Address: {{s.address}}<span>
+                            <span class="product_info"><span style="font-weight: bold">Birthday:</span> {{s.birthday|date("d/m/Y")}}<span><br> 
+                            <span class="product_info"><span style="font-weight: bold">Address:</span> {{s.address}}<span>
                         </div>
+                        
+                        
                         
                         {# <hr class="singleline">
                         <div class="order_info d-flex flex-row">
@@ -54,6 +58,8 @@
                         </div>
                     </div>
                 </div>
+          
+
             </div>
           </div>
         </div>

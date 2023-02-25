@@ -42,7 +42,7 @@ class SalaryStatisticsController extends AbstractController
         $data = [];//empty array
         foreach($staff as $s){
             if($s['Number_Of_Working_Days']>28){
-                $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary']+50000;
+                $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary']+500000;
             }
             else{
                 $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary'];
