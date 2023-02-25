@@ -56,6 +56,23 @@ class StaffRepository extends ServiceEntityRepository
    }
 
 
+ /**
+    * @return Staff[] Returns an array of Staff objects
+    */
+    public function hardWorking(): array
+    {
+        $en = $this->getEntityManager()->getConnection();
+        $sql = '
+            SELECT st.id, st.name, COUNT(tk.staff_id) as NumberOfWorkingDays
+            FROM `timekeeping` tk, `staff` st
+            WHERE tk.staff_id = st.id
+            GROUP BY tk.staff_id, MONTH(tk.date) 
+            HAVING COUNT(tk.staff_id)>28
+        ';
+        $stmt = $en->prepare($sql);
+        $re = $stmt->executeQuery();
+        return $re->fetchAllAssociative();
+    }
 
 
 
