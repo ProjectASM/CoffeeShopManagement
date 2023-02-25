@@ -48,8 +48,7 @@
                             <th>Basic Salary</th>
                             <th>Coefficents Salary</th>
                             <th>Number Of Working Days</th>
-                            <th>Bonus</th>
-                            <th>Adavance Salary</th>
+                            <th>Month</th>
                             <th>Total Salary</th>
                             <th>Action</th>
                           </tr>
@@ -62,13 +61,7 @@
                                   <td>{{ sal.basicSalary}}</td>
                                   <td>{{ sal.coefficientsSalary}}</td>
                                   <td>{{ sal.Number_Of_Working_Days}}</td>
-                                  {% if sal.Number_Of_Working_Days > 28 %}
-                                    <td>{{ sal.bonus + 500000}}</td>
-                                    {% else %}
-                                    <td>{{ sal.bonus}}</td>
-                                  {% endif %}
-                                  
-                                  <td>{{ sal.advanceSalary}}</td>
+                                  <td>{{ sal.Month}}</td>
                                   <td>{{ sal.Total_Salary}}</td>
                                   <td>
                                     <a href="{{path('salaryStatisticsEdit',{'id':sal.id})}}">Edit</a>

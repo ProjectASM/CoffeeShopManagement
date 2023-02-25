@@ -10,16 +10,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SearchController extends AbstractController
 {
-    // /**
-    //  * @Route("/search", name="app_search")
-    //  */
-    // public function index(): Response
-    // {
-    //     return $this->render('search/index.html.twig', [
-    //         'controller_name' => 'SearchController',
-    //     ]);
-    // }
-
     /**
      * @Route("/search", name="searchByName")
      */
@@ -30,6 +20,5 @@ class SearchController extends AbstractController
         return $this->render('home.html.twig', [
             'staff'=>$staff
         ]);
-        // return $this->json($search);
     }
 }

@@ -38,10 +38,24 @@ class SalaryStatisticsController extends AbstractController
      */
     public function salaryStatisticsPageAction(): Response
     {
-        $salary = $this->repo->SalaryStatistics();
+        $staff = $this->repo->SalaryStatistics();//complex data
+        $data = [];//empty array
+        foreach($staff as $s){
+            if($s['Number_Of_Working_Days']>28)
+                $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary']+50000;
+               
+            else
+                $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary'];
+
+            // $s= array($s);
+            $data[] = $s;
+            
+        }
+
         return $this->render('salary_statistics/table.html.twig', [
-            'salary'=>$salary
+            'salary'=>$data
         ]);
+        // return $this->json($data);
     }
 
     /**

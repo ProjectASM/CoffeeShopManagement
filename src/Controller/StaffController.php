@@ -111,4 +111,16 @@ class StaffController extends AbstractController
         $this->repo->remove($s,true);
         return $this->redirectToRoute('staffPage', [], Response::HTTP_SEE_OTHER);
     }
+
+    /**
+     * @Route("/hard-working-staff",name="hardWorking")
+     */
+    public function hardWorkingAction(): Response
+    {
+        $hard = $this->repo->hardWorking();
+        return $this->render('staff/hardworking.html.twig', [
+            'hard'=>$hard
+        ]);
+        // return $this->json($hard);
+    }
 }

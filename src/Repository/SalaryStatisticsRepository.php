@@ -41,16 +41,15 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
 
         //FindAll
 
-    /**
-    * @return SalaryStatistics[] Returns an array of SalaryStatistics objects
-    */
-    public function SalaryStatistics()
+    // /**
+    // * @return SalaryStatistics[] Returns an array of SalaryStatistics objects
+    // */
+    public function SalaryStatistics():array
     {
        $en = $this->getEntityManager()->getConnection();
        $sql = '
             SELECT st.id, st.name, ss.basic_salary as basicSalary, ss.coefficients_salary as coefficientsSalary, 
-                COUNT(tk.date) AS `Number_Of_Working_Days`, ss.bonus, ss.advance_salary as advanceSalary, 
-                (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total_Salary`
+                   COUNT(tk.date) AS Number_Of_Working_Days, MONTHNAME(tk.date) AS Month
             FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
             WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
             GROUP BY MONTH(tk.date), tk.staff_id
