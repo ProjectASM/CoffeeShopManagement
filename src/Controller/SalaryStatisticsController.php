@@ -41,17 +41,15 @@ class SalaryStatisticsController extends AbstractController
         $staff = $this->repo->SalaryStatistics();//complex data
         $data = [];//empty array
         foreach($staff as $s){
-            if($s['Number_Of_Working_Days']>28)
+            if($s['Number_Of_Working_Days']>28){
                 $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary']+50000;
-               
-            else
+            }
+            else{
                 $s['Total_Salary'] = $s['basicSalary']*$s['coefficientsSalary'];
-
+            }
             // $s= array($s);
             $data[] = $s;
-            
         }
-
         return $this->render('salary_statistics/table.html.twig', [
             'salary'=>$data
         ]);
@@ -103,25 +101,26 @@ class SalaryStatisticsController extends AbstractController
     }
 
     /**
-     * @Route("/table", name="salaryStatisticstable")
+     * @Route("/salary-table", name="salaryStatisticstable")
      */
     public function salaryStatisticstableAction(): Response
     {
         $salary = $this->repo->findAll();
-        return $this->render('salary_statistics/tableshow.html.twig', [
+        return $this->render('salary_statistics/salaryTable.html.twig', [
             'salary'=>$salary
         ]);
     }
-        /**
-     * @Route("/table", name="salaryStatistics")
-     */
-    public function salaryStatisticsAction(): Response
-    {
-        $salary = $this->repo->SalaryStatistics();
-        return $this->render('salary_statistics/index.html.twig', [
-            'salary'=>$salary
-        ]);
-    }
+
+    // /**
+    //  * @Route("/table", name="salaryStatistics")
+    //  */
+    // public function salaryStatisticsAction(): Response
+    // {
+    //     $salary = $this->repo->SalaryStatistics();
+    //     return $this->render('salary_statistics/index.html.twig', [
+    //         'salary'=>$salary
+    //     ]);
+    // }
 
     // /**
     //  * @Route("/{id}", name="findStaffSalaryById")

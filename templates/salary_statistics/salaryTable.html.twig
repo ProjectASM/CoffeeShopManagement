@@ -38,32 +38,17 @@
                         <thead>
                           <tr>
                             <th>Salary Id</th>
-                            {# <th>Staff Name</th> #}
                             <th>Basic Salary</th>
                             <th>Coefficents Salary</th>
-                            {# <th>Number Of Working Days</th>
-                            <th>Bonus</th> #}
-                            {# <th>Adavance Salary</th> #}
-                            {# <th>Total Salary</th> #}
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for sal in salary %}
                               <tr>
-                                   <td>{{ sal.id}}</td>
-                                  {# <td>{{ sal.name}}</td> #}
-                                   <td>{{ sal.basicSalary}}</td>
+                                  <td>{{ sal.id}}</td>
+                                  <td>{{ sal.basicSalary}}</td>
                                   <td>{{ sal.coefficientsSalary}}</td>
-                                  {# <td>{{ sal.Number_Of_Working_Days}}</td>
-                                  {% if sal.Number_Of_Working_Days > 28 %}
-                                    <td>{{ sal.bonus + 500000}}</td>
-                                    {% else %}
-                                    <td>{{ sal.bonus}}</td>
-                                  {% endif %} #}
-                                  
-                                   {# <td>{{ sal.advanceSalary}}</td> #}
-                                  {# <td>{{ sal.Total_Salary}}</td> #}
                                   <td> 
                                     <a href="{{path('salaryStatisticsEdit',{'id':sal.id})}}">Edit</a>
                                   <a href="{{path('salaryStatisticsDelete',{'id':sal.id})}}">Delete</a></td>
