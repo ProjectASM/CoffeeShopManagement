@@ -48,6 +48,7 @@
                             <th>Basic Salary</th>
                             <th>Coefficents Salary</th>
                             <th>Number Of Working Days</th>
+                            <th>Month</th>
                             <th>Bonus</th>
                             <th>Adavance Salary</th>
                             <th>Total Salary</th>
@@ -62,6 +63,7 @@
                                   <td>{{ sal.basicSalary}}</td>
                                   <td>{{ sal.coefficientsSalary}}</td>
                                   <td>{{ sal.Number_Of_Working_Days}}</td>
+                                  <td>{{ sal.Month}}
                                   {% if sal.Number_Of_Working_Days > 28 %}
                                     <td>{{ sal.bonus + 500000}}</td>
                                     {% else %}
@@ -75,15 +77,6 @@
                                   <a href="{{path('salaryStatisticsDelete',{'id':sal.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
-                          {# {% for field, inf in table %}
-                              <tr>
-                                  <td>{{ field}}</td>
-                                  <td>{{ inf}}</td>
-                                  <td>
-                                    <a href="{{path('salaryStatisticsEdit',{'id':sal.id})}}">Edit</a>
-                                  <a href="{{path('salaryStatisticsDelete',{'id':sal.id})}}">Delete</a></td>
-                              </tr>
-                          {% endfor %} #}
                           
                         </tbody>
                       </table>

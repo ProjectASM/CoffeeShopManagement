@@ -49,7 +49,7 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
        $en = $this->getEntityManager()->getConnection();
        $sql = '
             SELECT st.id, st.name, ss.basic_salary as basicSalary, ss.coefficients_salary as coefficientsSalary, 
-                COUNT(tk.date) AS `Number_Of_Working_Days`, ss.bonus, ss.advance_salary as advanceSalary, 
+                COUNT(tk.date) AS `Number_Of_Working_Days`, MONTHNAME(tk.date) AS Month,ss.bonus, ss.advance_salary as advanceSalary, 
                 (ss.basic_salary*ss.coefficients_salary + ss.bonus - ss.advance_salary) AS `Total_Salary`
             FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
             WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
