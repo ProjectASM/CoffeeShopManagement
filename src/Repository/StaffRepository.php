@@ -63,11 +63,11 @@ class StaffRepository extends ServiceEntityRepository
     {
         $en = $this->getEntityManager()->getConnection();
         $sql = '
-            SELECT st.id, st.name, COUNT(tk.staff_id) as NumberOfWorkingDays
-            FROM `timekeeping` tk, `staff` st
-            WHERE tk.staff_id = st.id
-            GROUP BY tk.staff_id, MONTH(tk.date) 
-            HAVING COUNT(tk.staff_id)>28
+        SELECT st.image, st.id, st.name, COUNT(tk.staff_id) as NumberOfWorkingDays, MONTHNAME(tk.date) AS Month
+        FROM `timekeeping` tk, `staff` st
+        WHERE tk.staff_id = st.id
+        GROUP BY tk.staff_id, MONTH(tk.date) 
+        HAVING COUNT(tk.staff_id) > 28
         ';
         $stmt = $en->prepare($sql);
         $re = $stmt->executeQuery();

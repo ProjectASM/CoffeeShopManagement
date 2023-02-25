@@ -117,9 +117,9 @@ class StaffController extends AbstractController
     public function hardWorkingStaff(): Response
     {
         $hard = $this->repo->hardWorking();
-        // return $this->render('staff/show.html.twig', [
-        //     'hard'=>$hard
-        // ]);
-        return $this->json($hard);
+        return $this->render('staff/hardworking.html.twig', [
+            'hard'=>$hard
+        ]);
+        // return $this->json($hard);
     }
 }
