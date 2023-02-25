@@ -26,12 +26,6 @@
 {% block body %}
   <div className="page-heading pb-2 mt-4 mb-2 ">
     <h3>Manager</h3> 
-        <a href="{{path('salaryStatisticsAdd')}}">
-            <button type="button" class="btn btn-outline-primary">Insert</button>
-        </a>
-        <a href="{{path('salaryStatisticstable')}}">
-            <button type="button" class="btn btn-outline-primary">Salary Table</button>
-        </a>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
@@ -43,31 +37,47 @@
                       <table class="table table-striped">
                         <thead>
                           <tr>
-                            <th>Staff Id</th>
-                            <th>Staff Name</th>
+                            <th>Salary Id</th>
+                            {# <th>Staff Name</th> #}
                             <th>Basic Salary</th>
                             <th>Coefficents Salary</th>
-                            <th>Number Of Working Days</th>
-                            <th>Month</th>
-                            <th>Total Salary</th>
+                            {# <th>Number Of Working Days</th>
+                            <th>Bonus</th> #}
+                            {# <th>Adavance Salary</th> #}
+                            {# <th>Total Salary</th> #}
                             <th>Action</th>
                           </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for sal in salary %}
                               <tr>
-                                  <td>{{ sal.id}}</td>
-                                  <td>{{ sal.name}}</td>
-                                  <td>{{ sal.basicSalary}}</td>
+                                   <td>{{ sal.id}}</td>
+                                  {# <td>{{ sal.name}}</td> #}
+                                   <td>{{ sal.basicSalary}}</td>
                                   <td>{{ sal.coefficientsSalary}}</td>
-                                  <td>{{ sal.Number_Of_Working_Days}}</td>
-                                  <td>{{ sal.Month}}</td>
-                                  <td>{{ sal.Total_Salary}}</td>
-                                  <td>
+                                  {# <td>{{ sal.Number_Of_Working_Days}}</td>
+                                  {% if sal.Number_Of_Working_Days > 28 %}
+                                    <td>{{ sal.bonus + 500000}}</td>
+                                    {% else %}
+                                    <td>{{ sal.bonus}}</td>
+                                  {% endif %} #}
+                                  
+                                   {# <td>{{ sal.advanceSalary}}</td> #}
+                                  {# <td>{{ sal.Total_Salary}}</td> #}
+                                  <td> 
                                     <a href="{{path('salaryStatisticsEdit',{'id':sal.id})}}">Edit</a>
                                   <a href="{{path('salaryStatisticsDelete',{'id':sal.id})}}">Delete</a></td>
                               </tr>
                           {% endfor %}
+                          {# {% for field, inf in table %}
+                              <tr>
+                                  <td>{{ field}}</td>
+                                  <td>{{ inf}}</td>
+                                  <td>
+                                    <a href="{{path('salaryStatisticsEdit',{'id':sal.id})}}">Edit</a>
+                                  <a href="{{path('salaryStatisticsDelete',{'id':sal.id})}}">Delete</a></td>
+                              </tr>
+                          {% endfor %} #}
                           
                         </tbody>
                       </table>
