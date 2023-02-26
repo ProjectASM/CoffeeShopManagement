@@ -27,17 +27,7 @@ class SalaryStatistics
     /**
      * @ORM\Column(type="float")
      */
-    private $bonus;
-
-    /**
-     * @ORM\Column(type="float")
-     */
     private $coefficientsSalary;
-
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $advanceSalary;
 
     /**
      * @ORM\OneToMany(targetEntity=Timekeeping::class, mappedBy="salary", orphanRemoval=true)
@@ -74,30 +64,6 @@ class SalaryStatistics
     public function setCoefficientsSalary(float $coefficientsSalary): self
     {
         $this->coefficientsSalary = $coefficientsSalary;
-
-        return $this;
-    }
-
-    public function getBonus(): ?float
-    {
-        return $this->bonus;
-    }
-
-    public function setBonus(float $bonus): self
-    {
-        $this->bonus = $bonus;
-
-        return $this;
-    }
-
-    public function getAdvanceSalary(): ?float
-    {
-        return $this->advanceSalary;
-    }
-
-    public function setAdvanceSalary(float $advanceSalary): self
-    {
-        $this->advanceSalary = $advanceSalary;
 
         return $this;
     }
