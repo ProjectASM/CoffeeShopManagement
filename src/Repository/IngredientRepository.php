@@ -38,37 +38,22 @@ class IngredientRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    
 
-      /**
-    * @return Staff[] Returns an array of Staff objects
+   /**
+    * @return Ingredient[] Returns an array of Ingredient objects
     */
-   public function searchingredient($namee): array
+   public function checkQuantity()
    {
-       return $this->createQueryBuilder('i')
-           ->select('i.id, i.ingredientName, i.quantity')
-           ->where('i.ingredientName LIKE :namee')
-           ->setParameter('namee', '%'.$namee.'%')
-        //    ->orderBy('s.id', 'ASC')
-        //    ->setMaxResults(10)
-           ->getQuery()
-           ->getArrayResult()
-       ;
+        $en = $this->getEntityManager()->getConnection();
+        $sql ='
+        SELECT id, ingredient_name AS ingredientName, quantity FROM `ingredient` WHERE quantity < 10
+            '
+        ;
+        $stmt = $en->prepare($sql);
+        $re = $stmt->executeQuery();
+        return $re->fetchAllAssociative();
    }
-
-//    /**
-//     * @return Ingredient[] Returns an array of Ingredient objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('i.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
 //    public function findOneBySomeField($value): ?Ingredient
 //    {

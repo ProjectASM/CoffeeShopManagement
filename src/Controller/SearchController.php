@@ -23,15 +23,15 @@ class SearchController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/searchh", name="searchingredient")
-     */
-    public function searchingredientAction(IngredientRepository $repo, Request $req): Response
-    {
-        $namee = $req->query->get('namee');
-        $ingredient = $repo->searchingredient($namee);
-        return $this->render('ingredient/index.html.twig', [
-            'ingredient'=>$ingredient
-        ]);
-    }
+    // /**
+    //  * @Route("/searchh", name="searchingredient")
+    //  */
+    // public function searchingredientAction(IngredientRepository $repo, Request $req): Response
+    // {
+    //     $namee = $req->query->get('namee');
+    //     $ingredient = $repo->searchingredient($namee);
+    //     return $this->render('ingredient/index.html.twig', [
+    //         'ingredient'=>$ingredient
+    //     ]);
+    // }
 }
