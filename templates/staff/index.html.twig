@@ -29,6 +29,9 @@
         <a href="{{path('staffAdd')}}">
             <button type="button" class="btn btn-outline-primary">Insert</button>
         </a>
+        <form class="w-auto py-1" style="max-width: 15rem" action="{{path('searchByName')}}">
+        <input type="search" class="form-control" style="border-radius: 10px" placeholder="Search" aria-label="Search" name="name">
+      </form>
                 </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">

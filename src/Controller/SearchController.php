@@ -23,6 +23,8 @@ class SearchController extends AbstractController
         ]);
     }
 
+    
+
     // /**
     //  * @Route("/searchh", name="searchingredient")
     //  */

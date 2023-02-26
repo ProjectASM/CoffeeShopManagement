@@ -75,7 +75,7 @@ class IngredientController extends AbstractController
         $this->repo->remove($ing,true);
         return $this->redirectToRoute('ingredientPage', [], Response::HTTP_SEE_OTHER);
     }
-    
+
     /**
      * @Route("/ingredientCheck", name="app_check")
      */
@@ -86,5 +86,5 @@ class IngredientController extends AbstractController
            'ingredient'=>$ingredient
         ]);
     }
-
+    
 }
