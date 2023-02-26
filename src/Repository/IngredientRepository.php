@@ -39,6 +39,22 @@ class IngredientRepository extends ServiceEntityRepository
         }
     }
 
+      /**
+    * @return Staff[] Returns an array of Staff objects
+    */
+   public function searchingredient($namee): array
+   {
+       return $this->createQueryBuilder('i')
+           ->select('i.id, i.ingredientName, i.quantity')
+           ->where('i.ingredientName LIKE :namee')
+           ->setParameter('namee', '%'.$namee.'%')
+        //    ->orderBy('s.id', 'ASC')
+        //    ->setMaxResults(10)
+           ->getQuery()
+           ->getArrayResult()
+       ;
+   }
+
 //    /**
 //     * @return Ingredient[] Returns an array of Ingredient objects
 //     */
