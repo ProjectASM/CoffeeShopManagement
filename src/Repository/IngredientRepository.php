@@ -55,13 +55,13 @@ class IngredientRepository extends ServiceEntityRepository
         return $re->fetchAllAssociative();
    }
 
-//    public function findOneBySomeField($value): ?Ingredient
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+   public function findOneBySomeField($value): ?Ingredient
+   {
+       return $this->createQueryBuilder('i')
+           ->andWhere('i.exampleField = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getOneOrNullResult()
+       ;
+   }
 }
