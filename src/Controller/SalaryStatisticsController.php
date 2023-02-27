@@ -22,16 +22,16 @@ class SalaryStatisticsController extends AbstractController
     {
         $this->repo = $repo;
     }
-    // /**
-    //  * @Route("/", name="salaryStatisticsPage")
-    //  */
-    // public function salaryStatisticsPageAction(): Response
-    // {
-    //     $salary = $this->repo->findAll();
-    //     return $this->render('salary_statistics/index.html.twig', [
-    //         'salary'=>$salary
-    //     ]);
-    // }
+    /**
+     * @Route("/salary-table", name="salaryTable")
+     */
+    public function salaryTableAction(): Response
+    {
+        $salary = $this->repo->findAll();
+        return $this->render('salary_statistics/salaryTable.html.twig', [
+            'salary'=>$salary
+        ]);
+    }
 
     /**
      * @Route("/", name="salaryStatisticsPage")
@@ -67,7 +67,7 @@ class SalaryStatisticsController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
          $this->repo->add($sal,true);
-         return $this->redirectToRoute('salaryStatisticsPage', [], Response::HTTP_SEE_OTHER);
+         return $this->redirectToRoute('salaryTable', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('salary_statistics/form.html.twig',[
          'form' => $form->createView()
@@ -84,7 +84,7 @@ class SalaryStatisticsController extends AbstractController
         $form->handleRequest($req);
         if($form->isSubmitted() && $form->isValid()){
          $this->repo->add($sal,true);
-         return $this->redirectToRoute('salaryStatisticsPage', [], Response::HTTP_SEE_OTHER);
+         return $this->redirectToRoute('salaryTable', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('salary_statistics/form.html.twig',[
          'form' => $form->createView()
@@ -97,19 +97,19 @@ class SalaryStatisticsController extends AbstractController
     public function deleteAction(Request $request, SalaryStatistics $sal): Response
     {
         $this->repo->remove($sal,true);
-        return $this->redirectToRoute('staffPage', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('salaryTable', [], Response::HTTP_SEE_OTHER);
     }
 
-    /**
-     * @Route("/salary-table", name="salaryStatisticstable")
-     */
-    public function salaryStatisticstableAction(): Response
-    {
-        $salary = $this->repo->findAll();
-        return $this->render('salary_statistics/salaryTable.html.twig', [
-            'salary'=>$salary
-        ]);
-    }
+    // /**
+    //  * @Route("/salary-table", name="salaryStatisticstable")
+    //  */
+    // public function salaryStatisticstableAction(): Response
+    // {
+    //     $salary = $this->repo->findAll();
+    //     return $this->render('salary_statistics/salaryTable.html.twig', [
+    //         'salary'=>$salary
+    //     ]);
+    // }
 
     // /**
     //  * @Route("/table", name="salaryStatistics")

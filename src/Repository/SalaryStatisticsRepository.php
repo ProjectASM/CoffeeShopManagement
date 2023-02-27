@@ -53,6 +53,7 @@ class SalaryStatisticsRepository extends ServiceEntityRepository
             FROM `staff` `st`, `timekeeping` `tk`, `salary_statistics` `ss`
             WHERE st.id = tk.staff_id AND tk.salary_id = ss.id
             GROUP BY MONTH(tk.date), tk.staff_id
+            ORDER BY st.id
        ';
        $stmt = $en->prepare($sql);
        $re = $stmt->executeQuery();

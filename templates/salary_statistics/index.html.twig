@@ -19,7 +19,7 @@
 </div>
 {% endblock %} #}
 
-{% extends 'admin.html.twig' %}
+{# {% extends 'admin.html.twig' %}
 
 {% block title %}Salary Statistics{% endblock %}
 
@@ -28,8 +28,11 @@
     <h3>Salary Statistics Manager</h3> 
         <a href="{{path('salaryStatisticsAdd')}}">
             <button type="button" class="btn btn-outline-primary">Insert</button>
-        </a>
-                </div>
+        </a> #}
+        {# <a href="{{path('salaryStatisticsPage')}}">
+            <button type="button" class="btn btn-outline-primary">Back to Salary Statistics</button>
+        </a> #}
+                {# </div>
                 <div class="page-content">
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                
@@ -44,9 +47,9 @@
                             <th>Basic Salary</th>
                             <th>Coefficents Salary</th>
                             <th>Bonus</th>
-                            <th>Adavance Salary</th>
+                            <th>Adavance Salary</th> #}
                             {# <th>Action</th> #}
-                          </tr>
+                          {# </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
                           {% for sal in salary %}
@@ -68,5 +71,5 @@
                 </div>
                 </div>
                 </div>
-{% endblock %}
+{% endblock %} #}
 

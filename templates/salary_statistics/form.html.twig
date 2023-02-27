@@ -4,7 +4,10 @@
 {% endblock %}
 {% block body %}
       <div className="page-heading pb-2 mt-4 mb-2 ">
-                <h3>Manager</h3> <a href="{{path('salaryStatisticsPage')}}"><button type="button" class="btn btn-outline-primary">Back to index</button></a>
+                <h3 style="text-align: center">Salary Manager</h3> 
+                <a href="{{path('salaryTable')}}">
+                    <button type="button" class="btn btn-outline-primary">Back to Salary table</button>
+                </a>
             </div>
             <div class="page-content mt-4">
                 <div class="card">
@@ -30,20 +33,20 @@
                                                 {{ form_widget(form.coefficientsSalary, {'attr':{'placeholder':'Coefficients Salary'}}) }}
                                             </div>
                                         </div>
-                                        <div class="col-12">
+                                        {# <div class="col-12">
                                             <div class="form-group">
                                                 <label for="first-name-vertical">Bonus</label>
                                                 {{ form_widget(form.bonus, {'attr':{'placeholder':'Bonus'}}) }}
                                                 
                                             </div>
-                                        </div>
+                                        </div> #}
                                         
-                                        <div class="col-12">
+                                        {# <div class="col-12">
                                             <div class="form-group">
                                                 <label for="contact-info-vertical">Advance Salary</label>
                                                 {{ form_widget(form.advanceSalary, {'attr':{'placeholder':'Advance Salary'}}) }}
                                             </div>
-                                        </div>
+                                        </div> #}
                                         {# <div class="col-12">
                                             <div class="form-group">
                                                 <label for="contact-info-vertical">Total Salary</label>

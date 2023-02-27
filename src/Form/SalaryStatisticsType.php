@@ -16,8 +16,8 @@ class SalaryStatisticsType extends AbstractType
         $builder
         ->add('basicSalary')
         ->add('coefficientsSalary')
-        ->add('bonus')
-        ->add('advanceSalary')
+        // ->add('bonus')
+        // ->add('advanceSalary')
         // ->add('totalSalary')
         ->add('save', SubmitType::class, [
             'label' => "Confirm"
