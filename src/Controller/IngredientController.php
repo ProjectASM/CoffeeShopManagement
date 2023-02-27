@@ -87,14 +87,14 @@ class IngredientController extends AbstractController
         ]);
     }
     
-    /**
-     * @Route("/ingredientHighCheck", name="check_high_quantity")
-     */
-    public function checkResidualQuantity(): Response
-    {
-        $ingredient = $this->repo->checkResidualQuantity();
-        return $this->render('ingredient/index.html.twig', [
-           'ingredient'=>$ingredient
-        ]);
-    }
+    // /**
+    //  * @Route("/ingredientHighCheck", name="check_high_quantity")
+    //  */
+    // public function checkResidualQuantity(): Response
+    // {
+    //     $ingredient = $this->repo->checkResidualQuantity();
+    //     return $this->render('ingredient/index.html.twig', [
+    //        'ingredient'=>$ingredient
+    //     ]);
+    // }
 }
