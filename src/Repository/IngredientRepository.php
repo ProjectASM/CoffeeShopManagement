@@ -55,6 +55,21 @@ class IngredientRepository extends ServiceEntityRepository
         return $re->fetchAllAssociative();
    }
 
+      /**
+    * @return Ingredient[] Returns an array of Ingredient objects
+    */
+    public function checkResidualQuantity()
+    {
+         $en = $this->getEntityManager()->getConnection();
+         $sql ='
+         SELECT id, ingredient_name AS ingredientName, quantity FROM `ingredient` WHERE quantity > 30
+             '
+         ;
+         $stmt = $en->prepare($sql);
+         $re = $stmt->executeQuery();
+         return $re->fetchAllAssociative();
+    }
+
    public function findOneBySomeField($value): ?Ingredient
    {
        return $this->createQueryBuilder('i')
